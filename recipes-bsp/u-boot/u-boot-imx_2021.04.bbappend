@@ -1,7 +1,7 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/u-boot-imx:"
 
 SRC_URI += " \
-    file://navq-changes.patch \
+    file://emcraft-build35.patch \
 "
 
-SRCREV = "1e4568fa41a4b6c607577a432f1a0ab36b6fc3ee"
+SRCREV = "3463140881c523e248d2fcb6bfc9ed25c0db93bd"
