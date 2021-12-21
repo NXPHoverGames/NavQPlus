@@ -6,6 +6,7 @@ SRC_URI += " \
     file://cp21xx.cfg \
     file://0001-imx8mp-evk-navq-dtb-make.patch \
     file://imx8mp-evk-navq.dts \
+    file://0002-spoof-ov5640-as-ov5645.patch \
 "
 
 SRCREV = "ef3f2cfc6010c13feb40cfb7fd7490832cf86f45"
