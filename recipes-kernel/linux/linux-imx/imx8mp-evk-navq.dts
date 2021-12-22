@@ -538,26 +538,27 @@
 	};
 */
 
-        ov5640_0: ov5640_mipi@3c {
-                compatible = "ovti,ov5640_mipi";
+        ov5645_0: ov5645_mipi@3c {
+                compatible = "ovti,ov5645";
                 reg = <0x3c>;
                 pinctrl-names = "default";
                 pinctrl-0 = <&pinctrl_csi0_pwn>, <&pinctrl_csi0_rst>, <&pinctrl_csi_mclk>;
-                clocks = <&clk IMX8MP_CLK_IPP_DO_CLKO1>;
-                clock-names = "csi_mclk";
-                assigned-clocks = <&clk IMX8MP_CLK_IPP_DO_CLKO1>;
+                clocks = <&clk IMX8MP_CLK_IPP_DO_CLKO2>;
+                clock-names = "xclk";
+                assigned-clocks = <&clk IMX8MP_CLK_IPP_DO_CLKO2>;
                 assigned-clock-parents = <&clk IMX8MP_CLK_24M>;
                 assigned-clock-rates = <24000000>;
+		clock-frequency = <24000000>;
                 csi_id = <0>;
-                pwn-gpios = <&gpio1 5 GPIO_ACTIVE_HIGH>;
-                rst-gpios = <&gpio1 6 GPIO_ACTIVE_LOW>;
+                enable-gpios = <&gpio1 5 GPIO_ACTIVE_HIGH>;
+                reset-gpios = <&gpio1 6 GPIO_ACTIVE_LOW>;
                 mclk = <24000000>;
                 mclk_source = <0>;
-                //mipi_csi;
+                mipi_csi;
                 status = "okay";
 
                 port {
-                        ov5640_mipi_0_ep: endpoint {
+                        ov5645_mipi_0_ep: endpoint {
                                 remote-endpoint = <&mipi_csi0_ep>;
                                 data-lanes = <1 2>;
                                 clock-lanes = <0>;
@@ -611,26 +612,27 @@
 
 
 
-        ov5640_1: ov5640_mipi@3c {
-                compatible = "ovti,ov5640_mipi";
+        ov5645_1: ov5645_mipi@3c {
+                compatible = "ovti,ov5645";
                 reg = <0x3c>;
                 pinctrl-names = "default";
                 pinctrl-0 = <&pinctrl_csi1_pwn>, <&pinctrl_csi1_rst>, <&pinctrl_csi_mclk_extra>;
-                clocks = <&clk IMX8MP_CLK_IPP_DO_CLKO1>;
-                clock-names = "csi_mclk";
-                assigned-clocks = <&clk IMX8MP_CLK_IPP_DO_CLKO1>;
+                clocks = <&clk IMX8MP_CLK_IPP_DO_CLKO2>;
+                clock-names = "xclk";
+                assigned-clocks = <&clk IMX8MP_CLK_IPP_DO_CLKO2>;
                 assigned-clock-parents = <&clk IMX8MP_CLK_24M>;
                 assigned-clock-rates = <24000000>;
+		clock-frequency = <24000000>;
                 csi_id = <1>;
-                pwn-gpios = <&gpio1 7 GPIO_ACTIVE_HIGH>;
-                rst-gpios = <&gpio1 0 GPIO_ACTIVE_LOW>;
+                enable-gpios = <&gpio1 7 GPIO_ACTIVE_HIGH>;
+                reset-gpios = <&gpio1 0 GPIO_ACTIVE_LOW>;
                 mclk = <24000000>;
                 mclk_source = <0>;
-                //mipi_csi;
+                mipi_csi;
                 status = "okay";
 
                 port {
-                        ov5640_mipi_1_ep: endpoint {
+                        ov5645_mipi_1_ep: endpoint {
                                 remote-endpoint = <&mipi_csi1_ep>;
                                 data-lanes = <1 2>;
                                 clock-lanes = <0>;
@@ -1608,7 +1610,7 @@
 	port@0 {
 		reg = <0>;
 		mipi_csi0_ep: endpoint {
-			remote-endpoint = <&ov5640_mipi_0_ep>;
+			remote-endpoint = <&ov5645_mipi_0_ep>;
 			data-lanes = <2>;
 			csis-hs-settle = <13>;
 			csis-clk-settle = <2>;
@@ -1627,7 +1629,7 @@
 	port@1 {
 		reg = <1>;
 		mipi_csi1_ep: endpoint {
-			remote-endpoint = <&ov5640_mipi_1_ep>;
+			remote-endpoint = <&ov5645_mipi_1_ep>;
 			data-lanes = <2>;
 			csis-hs-settle = <13>;
 			csis-clk-settle = <2>;
