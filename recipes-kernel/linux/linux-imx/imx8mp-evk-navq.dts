@@ -40,7 +40,7 @@
 		};
 	};
 */
-/*	reg_can1_stby: regulator-can1-stby {
+	reg_can1_stby: regulator-can1-stby {
 		compatible = "regulator-fixed";
 		regulator-name = "can1-stby";
 		pinctrl-names = "default";
@@ -49,7 +49,7 @@
 		regulator-max-microvolt = <3300000>;
 		gpio = <&gpio5 5 GPIO_ACTIVE_HIGH>;
 		enable-active-high;
-	};*/
+	};
 
 /*	reg_can2_stby: regulator-can2-stby {
 		compatible = "regulator-fixed";
@@ -555,7 +555,7 @@
                 mclk = <24000000>;
                 mclk_source = <0>;
                 mipi_csi;
-                status = "okay";
+                status = "disabled";
 
                 port {
                         ov5645_mipi_0_ep: endpoint {
@@ -629,7 +629,7 @@
                 mclk = <24000000>;
                 mclk_source = <0>;
                 mipi_csi;
-                status = "okay";
+                status = "disabled";
 
                 port {
                         ov5645_mipi_1_ep: endpoint {
@@ -781,14 +781,14 @@
 	status = "okay";
 };
 
-/*
+
 &flexcan1 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_flexcan1>;
 	xceiver-supply = <&reg_can1_stby>;
 	status = "okay";
 };
-
+/*
 &flexcan2 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_flexcan2>;
@@ -1190,32 +1190,32 @@
 		>;
 	};*/
 
-/*	pinctrl_flexcan1: flexcan1grp {
+	pinctrl_flexcan1: flexcan1grp {
 		fsl,pins = <
 			MX8MP_IOMUXC_SPDIF_RX__CAN1_RX          0x154
 			MX8MP_IOMUXC_SPDIF_TX__CAN1_TX          0x154
 		>;
 	};
-
+/*
 	pinctrl_flexcan2: flexcan2grp {
 		fsl,pins = <
 			MX8MP_IOMUXC_SAI5_MCLK__CAN2_RX		0x154
 			MX8MP_IOMUXC_SAI5_RXD3__CAN2_TX		0x154
 		>;
 	};
-
+*/
 	pinctrl_flexcan1_reg: flexcan1reggrp {
 		fsl,pins = <
 			MX8MP_IOMUXC_SPDIF_EXT_CLK__GPIO5_IO05	0x154	// CAN1_STBY 
 		>;
 	};
-
+/*
 	pinctrl_flexcan2_reg: flexcan2reggrp {
 		fsl,pins = <
 			MX8MP_IOMUXC_SAI2_MCLK__GPIO4_IO27	0x154	// CAN2_STBY 
 		>;
-	};*/
-
+	};
+*/
 /*	pinctrl_flexspi0: flexspi0grp {
 		fsl,pins = <
 			MX8MP_IOMUXC_NAND_ALE__FLEXSPI_A_SCLK		0x1c2
