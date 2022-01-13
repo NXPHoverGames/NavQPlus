@@ -51,7 +51,7 @@
 		enable-active-high;
 	};
 
-/*	reg_can2_stby: regulator-can2-stby {
+	reg_can2_stby: regulator-can2-stby {
 		compatible = "regulator-fixed";
 		regulator-name = "can2-stby";
 		pinctrl-names = "default";
@@ -60,7 +60,7 @@
 		regulator-max-microvolt = <3300000>;
 		gpio = <&gpio4 27 GPIO_ACTIVE_HIGH>;
 		enable-active-high;
-	};*/
+	};
 
 /*	reg_usb1_host_vbus: regulator-usb1-vbus {
 		compatible = "regulator-fixed";
@@ -788,15 +788,15 @@
 	xceiver-supply = <&reg_can1_stby>;
 	status = "okay";
 };
-/*
+
 &flexcan2 {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_flexcan2>;
 	xceiver-supply = <&reg_can2_stby>;
 	pinctrl-assert-gpios = <&pca6416 3 GPIO_ACTIVE_HIGH>;
-	status = "disabled";// can2 pin conflict with pdm: gpio low select pdm, gpio high select can2 
+	status = "okay";// can2 pin conflict with pdm: gpio low select pdm, gpio high select can2 
 };
-*/
+
 
 /*
 
@@ -1196,26 +1196,26 @@
 			MX8MP_IOMUXC_SPDIF_TX__CAN1_TX          0x154
 		>;
 	};
-/*
+
 	pinctrl_flexcan2: flexcan2grp {
 		fsl,pins = <
 			MX8MP_IOMUXC_SAI5_MCLK__CAN2_RX		0x154
 			MX8MP_IOMUXC_SAI5_RXD3__CAN2_TX		0x154
 		>;
 	};
-*/
+
 	pinctrl_flexcan1_reg: flexcan1reggrp {
 		fsl,pins = <
 			MX8MP_IOMUXC_SPDIF_EXT_CLK__GPIO5_IO05	0x154	// CAN1_STBY 
 		>;
 	};
-/*
+
 	pinctrl_flexcan2_reg: flexcan2reggrp {
 		fsl,pins = <
 			MX8MP_IOMUXC_SAI2_MCLK__GPIO4_IO27	0x154	// CAN2_STBY 
 		>;
 	};
-*/
+
 /*	pinctrl_flexspi0: flexspi0grp {
 		fsl,pins = <
 			MX8MP_IOMUXC_NAND_ALE__FLEXSPI_A_SCLK		0x1c2
