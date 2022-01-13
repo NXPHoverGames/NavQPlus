@@ -1,8 +1,6 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
-    file://containers.cfg \
-    file://slcan.cfg \
     file://cp21xx.cfg \
     file://0001-imx8mp-evk-navq-dtb-make.patch \
     file://imx8mp-evk-navq.dts \
