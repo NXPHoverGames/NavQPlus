@@ -1206,13 +1206,13 @@
 
 	pinctrl_flexcan1_reg: flexcan1reggrp {
 		fsl,pins = <
-			MX8MP_IOMUXC_SPDIF_EXT_CLK__GPIO5_IO05	0x154	// CAN1_STBY 
+			MX8MP_IOMUXC_SAI1_TXC__GPIO4_IO11	0x154	// CAN1_STBY 
 		>;
 	};
 
 	pinctrl_flexcan2_reg: flexcan2reggrp {
 		fsl,pins = <
-			MX8MP_IOMUXC_SAI2_MCLK__GPIO4_IO27	0x154	// CAN2_STBY 
+			MX8MP_IOMUXC_SAI1_TXD2__GPIO4_IO14	0x154	// CAN2_STBY 
 		>;
 	};
 
