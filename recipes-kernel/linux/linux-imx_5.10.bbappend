@@ -6,7 +6,7 @@ SRC_URI += " \
     file://imx8mp-evk-navq.dts \
 "
 
-SRCREV = "ef3f2cfc6010c13feb40cfb7fd7490832cf86f45"
+SRCREV = "a11753a89ec610768301d4070e10b8bd60fde8cd"
 
 do_patch_append() {
     cp ${WORKDIR}/imx8mp-evk-navq.dts ${S}/arch/arm64/boot/dts/freescale/

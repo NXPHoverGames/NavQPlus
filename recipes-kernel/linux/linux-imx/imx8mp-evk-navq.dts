@@ -47,7 +47,7 @@
 		pinctrl-0 = <&pinctrl_flexcan1_reg>;
 		regulator-min-microvolt = <3300000>;
 		regulator-max-microvolt = <3300000>;
-		gpio = <&gpio5 5 GPIO_ACTIVE_HIGH>;
+		gpio = <&gpio4 11 GPIO_ACTIVE_HIGH>;
 		enable-active-high;
 	};
 
@@ -58,7 +58,7 @@
 		pinctrl-0 = <&pinctrl_flexcan2_reg>;
 		regulator-min-microvolt = <3300000>;
 		regulator-max-microvolt = <3300000>;
-		gpio = <&gpio4 27 GPIO_ACTIVE_HIGH>;
+		gpio = <&gpio4 14 GPIO_ACTIVE_HIGH>;
 		enable-active-high;
 	};
 
