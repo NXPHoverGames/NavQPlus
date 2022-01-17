@@ -732,11 +732,11 @@
 
 
 
-	ptn5110_port2: tcpc_port2@53 {
+	ptn5110_port2: tcpc_port2@52 {
                 compatible = "nxp,ptn5110";
                 pinctrl-names = "default";
                 pinctrl-0 = <&pinctrl_typec_port2>;
-                reg = <0x53>;
+                reg = <0x52>;
                 interrupt-parent = <&gpio3>;
                 interrupts = <23 8>;
 
