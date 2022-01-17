@@ -928,7 +928,7 @@
 
 &pcie_phy{
 	ext_osc = <1>;
-	status = "disabled";
+	status = "okay";
 };
 
 &sai2 {
