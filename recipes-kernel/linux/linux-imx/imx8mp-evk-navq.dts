@@ -539,7 +539,7 @@
 */
 
         ov5645_0: ov5645_mipi@3c {
-                compatible = "ovti,ov5645";
+                compatible = "ovti,ov5645tn";
                 reg = <0x3c>;
                 pinctrl-names = "default";
                 pinctrl-0 = <&pinctrl_csi0_pwn>, <&pinctrl_csi0_rst>, <&pinctrl_csi_mclk>;
@@ -555,7 +555,7 @@
                 mclk = <24000000>;
                 mclk_source = <0>;
                 mipi_csi;
-                status = "disabled";
+                status = "okay";
 
                 port {
                         ov5645_mipi_0_ep: endpoint {
@@ -613,7 +613,7 @@
 
 
         ov5645_1: ov5645_mipi@3c {
-                compatible = "ovti,ov5645";
+                compatible = "ovti,ov5645tn";
                 reg = <0x3c>;
                 pinctrl-names = "default";
                 pinctrl-0 = <&pinctrl_csi1_pwn>, <&pinctrl_csi1_rst>, <&pinctrl_csi_mclk_extra>;
@@ -629,7 +629,7 @@
                 mclk = <24000000>;
                 mclk_source = <0>;
                 mipi_csi;
-                status = "disabled";
+                status = "okay";
 
                 port {
                         ov5645_mipi_1_ep: endpoint {
