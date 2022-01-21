@@ -1242,7 +1242,7 @@
 
         pinctrl_flexcan1_reg_en: flexcan1reggrpen {
                 fsl,pins = <
-                        MX8MP_IOMUXC_SPDIF_EXT_CLK__GPIO5_IO15  0x154   // CAN1_EN 
+                        MX8MP_IOMUXC_SPDIF_EXT_CLK__GPIO5_IO05  0x154   // CAN1_EN 
                 >;
         };
 
