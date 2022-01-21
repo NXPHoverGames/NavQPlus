@@ -43,6 +43,8 @@
 	reg_can1_en: regulator-can1-gen {
 		compatible = "regulator-fixed";
 		regulator-name = "can1-en";
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_flexcan1_reg_en>;
 		regulator-min-microvolt = <3300000>;
 		regulator-max-microvolt = <3300000>;
 		gpio = <&gpio5 5 GPIO_ACTIVE_HIGH>;
@@ -52,6 +54,8 @@
         reg_can2_en: regulator-can2-gen {
                 compatible = "regulator-fixed";
                 regulator-name = "can2-en";
+		pinctrl-names = "default";
+		pinctrl-0 = <&pinctrl_flexcan2_reg_en>;
                 regulator-min-microvolt = <3300000>;
                 regulator-max-microvolt = <3300000>;
                 gpio = <&gpio4 15 GPIO_ACTIVE_HIGH>;
@@ -1224,19 +1228,29 @@
 		>;
 	};
 
-	pinctrl_flexcan1_reg: flexcan1reggrp {
+	pinctrl_flexcan1_reg_stby: flexcan1reggrpstby {
 		fsl,pins = <
 			MX8MP_IOMUXC_SAI1_TXC__GPIO4_IO11	0x154	// CAN1_STBY
-			MX8MP_IOMUXC_SPDIF_EXT_CLK__GPIO5_IO15  0x154   // CAN1_EN 
 		>;
 	};
 
-	pinctrl_flexcan2_reg: flexcan2reggrp {
+	pinctrl_flexcan2_reg_stby: flexcan2reggrpstby {
 		fsl,pins = <
 			MX8MP_IOMUXC_SAI1_TXD2__GPIO4_IO14	0x154	// CAN2_STBY
-			MX8MP_IOMUXC_SAI1_TXD3__GPIO4_IO15      0x154   // CAN2_EN 
 		>;
 	};
+
+        pinctrl_flexcan1_reg_en: flexcan1reggrpen {
+                fsl,pins = <
+                        MX8MP_IOMUXC_SPDIF_EXT_CLK__GPIO5_IO15  0x154   // CAN1_EN 
+                >;
+        };
+
+        pinctrl_flexcan2_reg_en: flexcan2reggrpen {
+                fsl,pins = <
+                        MX8MP_IOMUXC_SAI1_TXD3__GPIO4_IO15      0x154   // CAN2_EN 
+                >;
+        };
 
 /*	pinctrl_flexspi0: flexspi0grp {
 		fsl,pins = <
