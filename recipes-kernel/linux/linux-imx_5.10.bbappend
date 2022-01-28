@@ -3,6 +3,7 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 SRC_URI += " \
     file://cp21xx.cfg \
     file://tja1xxc45.cfg \
+    file://ov5645tn.cfg \
     file://0001-imx8mp-evk-navq-dtb-make.patch \
     file://imx8mp-evk-navq.dts \
     file://0002-Add-OV5645TN-driver.patch \
