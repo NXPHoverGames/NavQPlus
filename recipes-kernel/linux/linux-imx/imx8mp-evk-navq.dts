@@ -376,19 +376,23 @@
 &fec {
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_fec>;
-	phy-mode = "rgmii-id";
+	phy-mode = "rmii";
 	phy-handle = <&ethphy1>;
-	fsl,magic-packet;
 	status = "okay";
-
-	mdio {
+	assigned-clock-parents = <&clk IMX8MP_SYS_PLL1_266M>,
+							 <&clk IMX8MP_SYS_PLL2_100M>,
+							 <&clk IMX8MP_SYS_PLL2_50M>,
+							 <&clk IMX8MP_SYS_PLL2_50M>;
+	assigned-clock-rates = <0>, <100000000>, <50000000>, <50000000>;
+ 
+ 	mdio {
 		#address-cells = <1>;
 		#size-cells = <0>;
 
 		ethphy1: ethernet-phy@1 {
-			compatible = "ethernet-phy-ieee802.3-c22";
-			reg = <1>;
-			eee-broken-1000t,vddio-1p8v;
+			compatible = "ethernet-phy-ieee802.3-c45";
+			reg = <14>;
+			eee-broken-1000t,vddio-3p3v;
 		};
 	};
 };

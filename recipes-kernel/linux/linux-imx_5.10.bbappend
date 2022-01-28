@@ -2,9 +2,11 @@ FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
     file://cp21xx.cfg \
+    file://tja1xxc45.cfg \
     file://0001-imx8mp-evk-navq-dtb-make.patch \
     file://imx8mp-evk-navq.dts \
     file://0002-Add-OV5645TN-driver.patch \
+    file://0005-TJA11XX-C45-SUPPORT.patch \
 "
 
 SRCREV = "a11753a89ec610768301d4070e10b8bd60fde8cd"
