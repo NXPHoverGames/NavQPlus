@@ -8,7 +8,9 @@ SRC_URI += " \
     file://0002-Add-OV5645TN-driver.patch \
     file://0005-TJA11XX-C45-SUPPORT.patch \
     file://0006-TJA11XX-C45-DRIVER.patch \
+    file://0007-add-pcf2131-driver.patch \
     file://tja1xxc45.cfg \
+    file://pcf2131.cfg \
 "
 
 SRCREV = "a11753a89ec610768301d4070e10b8bd60fde8cd"
