@@ -614,8 +614,8 @@ index 000000000000..1c81e1816e29
 +	 * left floating if unused.
 +	 */
 +	ret = regmap_update_bits(pcf2131->regmap, PCF2131_REG_CTRL5,
-+				 PCF2131_BIT_CTRL5_TSIE,
-+				 PCF2131_BIT_CTRL5_TSIE);
++				 PCF2131_BIT_CTRL5_TSIE1,
++				 PCF2131_BIT_CTRL5_TSIE1);
 +	if (ret) {
 +		dev_err(dev, "%s: tamper detection config (ctrl2) failed\n",
 +			__func__);
