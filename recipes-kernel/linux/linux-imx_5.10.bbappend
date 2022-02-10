@@ -9,6 +9,7 @@ SRC_URI += " \
     file://0005-TJA11XX-C45-SUPPORT.patch \
     file://0006-TJA11XX-C45-DRIVER.patch \
     file://0007-add-pcf2131-driver.patch \
+    file://0008-pcf2131-driver-fix.patch \
     file://tja1xxc45.cfg \
     file://pcf2131.cfg \
 "
