@@ -1,14 +1,20 @@
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
-    file://containers.cfg \
-    file://slcan.cfg \
     file://cp21xx.cfg \
+    file://ov5645tn.cfg \
     file://0001-imx8mp-evk-navq-dtb-make.patch \
     file://imx8mp-evk-navq.dts \
+    file://0002-Add-OV5645TN-driver.patch \
+    file://0005-TJA11XX-C45-SUPPORT.patch \
+    file://0006-TJA11XX-C45-DRIVER.patch \
+    file://0007-add-pcf2131-driver.patch \
+    file://0008-pcf2131-driver-fix.patch \
+    file://tja1xxc45.cfg \
+    file://pcf2131.cfg \
 "
 
-SRCREV = "ef3f2cfc6010c13feb40cfb7fd7490832cf86f45"
+SRCREV = "a11753a89ec610768301d4070e10b8bd60fde8cd"
 
 do_patch_append() {
     cp ${WORKDIR}/imx8mp-evk-navq.dts ${S}/arch/arm64/boot/dts/freescale/
