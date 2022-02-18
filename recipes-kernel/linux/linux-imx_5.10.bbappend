@@ -12,6 +12,7 @@ SRC_URI += " \
     file://0008-pcf2131-driver-fix.patch \
     file://tja1xxc45.cfg \
     file://pcf2131.cfg \
+    file://gasket_apex.cfg \ 
 "
 
 SRCREV = "a11753a89ec610768301d4070e10b8bd60fde8cd"
