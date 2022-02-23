@@ -14,7 +14,7 @@ SRC_URI += " \
     file://pcf2131.cfg \
 "
 
-SRCREV = "a11753a89ec610768301d4070e10b8bd60fde8cd"
+SRCREV = "a68e31b63f864ff71cd4adb40fbc9e1edc75c250"
 
 do_patch_append() {
     cp ${WORKDIR}/imx8mp-evk-navq.dts ${S}/arch/arm64/boot/dts/freescale/
