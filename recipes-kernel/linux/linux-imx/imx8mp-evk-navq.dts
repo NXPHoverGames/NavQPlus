@@ -806,6 +806,12 @@
 
 };
 
+&i2c6 {
+	clock-frequency = <400000>;
+	pinctrl-names = "default";
+	pinctrl-0 = <&pinctrl_i2c6>;
+	status = "okay";
+};
 
 &irqsteer_hdmi {
 	status = "okay";
@@ -1323,6 +1329,12 @@
                 >;
         };
 
+	pinctrl_i2c6: i2c6grp {
+		fsl,pins = <
+			MX8MP_IOMUXC_UART4_RXD__I2C6_SCL	0x400001c3
+			MX8MP_IOMUXC_UART4_TXD__I2C6_SDA	0x400001c3
+		>;
+	};
 
 /*
 	pinctrl_mipi_dsi_en: mipi_dsi_en {
