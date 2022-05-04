@@ -811,6 +811,19 @@
 	pinctrl-names = "default";
 	pinctrl-0 = <&pinctrl_i2c6>;
 	status = "okay";
+
+	fxos8700: fxos8700@1f {
+		compatible = "nxp,fxos8700";
+		status = "okay";
+		reg = <0x1f>;
+	};
+
+	fxas21002c: fxas21002c@21 {
+		compatible = "nxp,fxas21002c";
+		status = "okay";
+		reg = <0x21>;
+	};
+	
 };
 
 &irqsteer_hdmi {

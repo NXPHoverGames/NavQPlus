@@ -13,7 +13,8 @@ SRC_URI += " \
     file://tja1xxc45.cfg \
     file://pcf2131.cfg \
     file://gasket_apex.cfg \ 
-    file://joystick.cfg \ 
+    file://joystick.cfg \
+    file://imu.cfg \ 
 "
 
 SRCREV = "a68e31b63f864ff71cd4adb40fbc9e1edc75c250"
