@@ -7,6 +7,8 @@ IMAGE_INSTALL_append += " \
                          packagegroup-imx-ml-desktop \
                         "
 
+IMAGE_INSTALL_remove += "chromium-ozone-wayland"
+
 ROOTFS_POSTPROCESS_COMMAND_append += " do_disable_hibernate; do_generate_netplan;"
 
 APTGET_EXTRA_PACKAGES += "\
