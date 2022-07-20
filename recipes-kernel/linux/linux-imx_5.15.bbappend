@@ -1,4 +1,4 @@
-# 5.15.32_2.0.0
+# 5.15.5_1.0.0
 
 FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
 
@@ -19,7 +19,7 @@ SRC_URI += " \
     file://imu.cfg \ 
 "
 
-SRCREV = "03a89e3d62cbdd2eb856590e4c5e6d62572ac96c"
+SRCREV = "c1084c2773fc1005ed140db625399d5334d94a28"
 
 do_patch_append() {
     cp ${WORKDIR}/imx8mp-evk-navq.dts ${S}/arch/arm64/boot/dts/freescale/
