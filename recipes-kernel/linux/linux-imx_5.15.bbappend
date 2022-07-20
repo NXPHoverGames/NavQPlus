@@ -1,6 +1,6 @@
 # 5.15.5_1.0.0
 
-FILESEXTRAPATHS_prepend := "${THISDIR}/${PN}:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/${PN}:"
 
 SRC_URI += " \
     file://cp21xx.cfg \

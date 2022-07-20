@@ -1,4 +1,4 @@
-FILESEXTRAPATHS_prepend := "${THISDIR}/u-boot-imx:"
+FILESEXTRAPATHS:prepend := "${THISDIR}/u-boot-imx:"
 
 SRC_URI += " \
     file://0001-imx8mpnavq-linux-dtb.patch \
