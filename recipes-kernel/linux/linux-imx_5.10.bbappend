@@ -19,10 +19,10 @@ SRC_URI += " \
 
 SRCREV = "a68e31b63f864ff71cd4adb40fbc9e1edc75c250"
 
-do_patch_append() {
+do_patch:append() {
     cp ${WORKDIR}/imx8mp-evk-navq.dts ${S}/arch/arm64/boot/dts/freescale/
 }
 
-do_configure_append () {
+do_configure:append () {
     ${S}/scripts/kconfig/merge_config.sh -m -O ${WORKDIR}/build ${WORKDIR}/build/.config ${WORKDIR}/*.cfg
 }
