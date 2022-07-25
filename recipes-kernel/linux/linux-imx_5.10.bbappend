@@ -17,7 +17,7 @@ SRC_URI += " \
     file://imu.cfg \ 
 "
 
-SRCREV = "a68e31b63f864ff71cd4adb40fbc9e1edc75c250"
+SRCREV = "c59614bdd6f6b288a42cebda186f37da8796899"
 
 do_patch_append() {
     cp ${WORKDIR}/imx8mp-evk-navq.dts ${S}/arch/arm64/boot/dts/freescale/
