@@ -9,12 +9,22 @@ IMAGE_INSTALL_append += " \
 
 IMAGE_INSTALL_remove += "chromium-ozone-wayland"
 
+IMAGE_INSTALL += "install-interface-config install-dns-config install-resolv-config"
+
 ROOTFS_POSTPROCESS_COMMAND_append += " do_disable_hibernate; do_generate_netplan;"
 
 APTGET_EXTRA_PACKAGES += "\
 	netplan.io \
 "
 
+APTGET_EXTRA_PACKAGES_remove += "\
+	connman \
+"
+
+IMAGE_PREPROCESS_COMMAND_remove += "\
+	do_fix_connman_conflict \
+"
+	
 do_disable_hibernate() {
 	set -x
 
@@ -22,8 +32,8 @@ do_disable_hibernate() {
 	ln -s /dev/null ${IMAGE_ROOTFS}/etc/systemd/system/suspend.target
 	ln -s /dev/null ${IMAGE_ROOTFS}/etc/systemd/system/hibernate.target
 	ln -s /dev/null ${IMAGE_ROOTFS}/etc/systemd/system/hybrid-sleep.target
-  sed -i 's/#Allow/Allow/g' ${IMAGE_ROOTFS}/etc/systemd/sleep.conf
-  sed -i 's/=yes/=no/g' ${IMAGE_ROOTFS}/etc/systemd/sleep.conf
+  	sed -i 's/#Allow/Allow/g' ${IMAGE_ROOTFS}/etc/systemd/sleep.conf
+  	sed -i 's/=yes/=no/g' ${IMAGE_ROOTFS}/etc/systemd/sleep.conf
 
 	set +x
 }
@@ -31,7 +41,7 @@ do_disable_hibernate() {
 do_generate_netplan() {
 	set -x
 
-  echo "network:\n  version: 2\n  renderer: NetworkManager" > ${IMAGE_ROOTFS}/etc/netplan/01-network-manager-all.yaml
-
+	echo "network:\n  version: 2\n  renderer: NetworkManager" > ${IMAGE_ROOTFS}/etc/netplan/01-network-manager-all.yaml
+	
 	set +x
 }
