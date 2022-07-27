@@ -725,8 +725,8 @@
                 reg = <0x51>;
                 interrupt-parent = <&gpio4>;
                 interrupts = <28 8>;
-		status = "disabled";
-		fault-status-mask = <0xef>;
+		/*status = "disabled";
+		fault-status-mask = <0xef>;*/
 
                 port {
                         typec_dr_sw: endpoint {
@@ -739,12 +739,12 @@
                         label = "USB-C Port1";
                         power-role = "dual";
                         data-role = "dual";
-                        try-power-role = "sink";
+                        try-power-role = "source";
                         source-pdos = <PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>;
                         sink-pdos = <PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)
                                      PDO_VAR(5000, 20000, 3000)>;
                         op-sink-microwatt = <15000000>;
-                        /* self-powered; */
+                        self-powered;
 
                         ports {
                                 #address-cells = <1>;
@@ -769,6 +769,8 @@
                 reg = <0x52>;
                 interrupt-parent = <&gpio3>;
                 interrupts = <23 8>;
+                status = "disabled";
+		fault-status-mask = <0xef>;
 
                 port {
                         typec_dr_sw_port2: endpoint {
@@ -781,12 +783,12 @@
                         label = "USB-C Port2";
                         power-role = "dual";
                         data-role = "dual";
-                        try-power-role = "source";
+                        try-power-role = "sink";
                         source-pdos = <PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)>;
                         sink-pdos = <PDO_FIXED(5000, 3000, PDO_FIXED_USB_COMM)
                                      PDO_VAR(5000, 20000, 3000)>;
                         op-sink-microwatt = <15000000>;
-                        self-powered;
+                        /*self-powered;*/
 
                         ports {
                                 #address-cells = <1>;
@@ -1048,6 +1050,12 @@
 
 
 &usb3_phy0 {
+        fsl,phy-tx-vref-tune = <6>;
+        fsl,phy-tx-rise-tune = <0>;
+        fsl,phy-tx-preemp-amp-tune = <3>;
+        fsl,phy-comp-dis-tune = <7>;
+        fsl,pcs-tx-deemph-3p5db = <0x21>;
+        fsl,phy-pcs-tx-swing-full = <0x7f>;
 	status = "okay";
 };
 
@@ -1074,12 +1082,14 @@
 
 
 &usb3_phy1 {
+	/*
         fsl,phy-tx-vref-tune = <6>;
         fsl,phy-tx-rise-tune = <0>;
         fsl,phy-tx-preemp-amp-tune = <3>;
         fsl,phy-comp-dis-tune = <7>;
         fsl,pcs-tx-deemph-3p5db = <0x21>;
         fsl,phy-pcs-tx-swing-full = <0x7f>;
+	*/
 	status = "okay";
 };
 
