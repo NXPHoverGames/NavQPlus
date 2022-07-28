@@ -9,7 +9,7 @@ IMAGE_INSTALL_append += " \
 
 IMAGE_INSTALL_remove += "chromium-ozone-wayland"
 
-IMAGE_INSTALL += "install-interface-config install-dns-config install-resolv-config"
+IMAGE_INSTALL += "install-interface-config install-dns-config"
 
 ROOTFS_POSTPROCESS_COMMAND_append += " do_disable_hibernate; do_generate_netplan;"
 
