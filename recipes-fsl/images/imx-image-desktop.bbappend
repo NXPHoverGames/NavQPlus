@@ -1,3 +1,7 @@
+IMAGE_PREPROCESS_COMMAND_remove += "\
+        do_fix_connman_conflict \
+"
+
 IMAGE_INSTALL_append += " \
                          opencv \     
                          opencv-apps \
@@ -11,7 +15,8 @@ IMAGE_INSTALL_remove += "chromium-ozone-wayland"
 
 IMAGE_INSTALL += "install-interface-config install-dns-config"
 
-ROOTFS_POSTPROCESS_COMMAND_append += " do_disable_hibernate; do_generate_netplan;"
+ROOTFS_POSTPROCESS_COMMAND_remove += " do_update_dns;"
+ROOTFS_POSTPROCESS_COMMAND_append += " do_disable_hibernate; do_generate_netplan; do_fix_dns;"
 
 APTGET_EXTRA_PACKAGES += "\
 	netplan.io \
@@ -21,10 +26,6 @@ APTGET_EXTRA_PACKAGES_remove += "\
 	connman \
 "
 
-IMAGE_PREPROCESS_COMMAND_remove += "\
-	do_fix_connman_conflict \
-"
-	
 do_disable_hibernate() {
 	set -x
 
@@ -43,5 +44,14 @@ do_generate_netplan() {
 
 	echo "network:\n  version: 2\n  renderer: NetworkManager" > ${IMAGE_ROOTFS}/etc/netplan/01-network-manager-all.yaml
 	
+	set +x
+}
+
+fakeroot do_fix_dns() {
+	set -x
+
+	rm "${APTGET_CHROOT_DIR}/etc/resolv.conf"
+	echo "nameserver 8.8.8.8" > "${APTGET_CHROOT_DIR}/etc/resolv.conf"
+
 	set +x
 }
