@@ -1,19 +1,18 @@
-IMAGE_PREPROCESS_COMMAND_remove += "\
-		do_fix_connman_conflict \
-"
+IMAGE_PREPROCESS_COMMAND_remove += "do_fix_connman_conflict"
 
 IMAGE_INSTALL_append += "opencv \
-						opencv-apps \
-						opencv-samples \
-						python3-opencv \
-						tensorflow-lite-vx-delegate \
-						packagegroup-imx-ml-desktop \
-						"
+			opencv-apps \
+			opencv-samples \
+			python3-opencv \
+			tensorflow-lite-vx-delegate \
+			packagegroup-imx-ml-desktop \
+			"
 
 IMAGE_INSTALL_remove += "chromium-ozone-wayland"
 
 IMAGE_INSTALL += "install-interface-config install-dns-config"
 
+ROOTFS_POSTPROCESS_COMMAND_prepend += " do_ros_repo;"
 ROOTFS_POSTPROCESS_COMMAND_remove += " do_update_dns;"
 ROOTFS_POSTPROCESS_COMMAND_append += " do_disable_hibernate; do_generate_netplan; do_fix_dns; do_install_pip_packages;"
 
@@ -42,7 +41,7 @@ APTGET_EXTRA_PACKAGES += "\
 	python3-rosdep \
 	python3-setuptools \
 	python3-testresources \
-	python3-vcstool \
+	python3-vcstools \
 	python3-argcomplete \
 	python3-empy \
 	python3-jinja2 \
@@ -105,10 +104,27 @@ APTGET_EXTRA_PACKAGES += "\
 	protobuf-compiler \
 	libimage-exiftool-perl \
 	v4l-utils \
-	v4l2loopback-utils \
 	gstreamer1.0-nice \
 	gstreamer1.0-opencv \
 "
+
+
+APTGET_EXTRA_PACKAGES_LAST += " \ 
+	ros-galactic-desktop \ 
+	ros-galactic-cv-bridge \
+	ros-galactic-image-tools \
+	ros-galactic-image-transport \
+	ros-galactic-image-transport-plugins \
+	ros-galactic-*msg* \
+	ros-galactic-camera-calibration-parsers \
+	ros-galactic-camera-info-manager \
+	ros-galactic-launch-testing-ament-cmake \
+	ros-galactic-vision-opencv \
+	ros-galactic-image-pipeline \
+	ros-galactic-rmw-* \
+"
+
+# Couldn't get v4l2loopback-utils because of dkms failure. Try later maybe?
 
 APTGET_EXTRA_PACKAGES_remove += "\
 	connman \
@@ -124,6 +140,15 @@ do_disable_hibernate() {
 	sed -i 's/#Allow/Allow/g' ${IMAGE_ROOTFS}/etc/systemd/sleep.conf
 	sed -i 's/=yes/=no/g' ${IMAGE_ROOTFS}/etc/systemd/sleep.conf
 
+	set +x
+}
+
+fakeroot do_ros_repo() {
+	set -x
+
+	wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O ${APTGET_CHROOT_DIR}/usr/share/keyrings/ros-archive-keyring.gpg
+	echo "deb [arch=arm64 signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu focal main" > ${APTGET_CHROOT_DIR}/etc/apt/sources.list.d/ros2.list
+	
 	set +x
 }
 
@@ -147,18 +172,18 @@ fakeroot do_fix_dns() {
 fakeroot do_install_pip_packages() {
 	set -x
 
-	python3 -m pip install \
-    flake8-blind-except \
-    flake8-builtins \
-    flake8-class-newline \
-    flake8-comprehensions \
-    flake8-deprecated \
-    flake8-docstrings \
-    flake8-import-order \
-    flake8-quotes \
-    pytest-repeat \
-    pytest-rerunfailures \
-    pytest
+	${APTGET_CHROOT_DIR}/usr/bin/pip3 install --user \
+   	flake8-blind-except \
+    	flake8-builtins \
+    	flake8-class-newline \
+    	flake8-comprehensions \
+    	flake8-deprecated \
+    	flake8-docstrings \
+    	flake8-import-order \
+    	flake8-quotes \
+    	pytest-repeat \
+    	pytest-rerunfailures \
+    	pytest
 
 	set +x
 }
