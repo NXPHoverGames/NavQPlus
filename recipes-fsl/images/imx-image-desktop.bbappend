@@ -14,7 +14,8 @@ IMAGE_INSTALL += "install-interface-config install-dns-config"
 
 ROOTFS_POSTPROCESS_COMMAND_prepend += " do_ros_repo;"
 ROOTFS_POSTPROCESS_COMMAND_remove += " do_update_dns;"
-ROOTFS_POSTPROCESS_COMMAND_append += " do_disable_hibernate; do_generate_netplan; do_fix_dns; do_install_pip_packages;"
+ROOTFS_POSTPROCESS_COMMAND_append += " do_disable_hibernate; do_generate_netplan; \
+					do_fix_dns; do_install_pip_packages; do_install_home_files;"
 
 APTGET_EXTRA_PACKAGES += "\
 	netplan.io \
@@ -184,6 +185,29 @@ fakeroot do_install_pip_packages() {
     	pytest-repeat \
     	pytest-rerunfailures \
     	pytest
+
+	set +x
+}
+
+fakeroot do_install_home_files() {
+	set -x
+
+	echo "<CycloneDDS> \
+  	<Domain> \
+    	<General> \
+      	<NetworkInterfaceAddress>usb0,mlan0</NetworkInterfaceAddress> \
+    	</General> \
+  	</Domain> \
+	</CycloneDDS> \
+	" > ${APTGET_CHROOT_DIR}/home/user/CycloneDDSConfig.xml
+
+	echo "source /opt/ros/galactic/setup.bash" >> ${APTGET_CHROOT_DIR}/home/user/.bashrc
+	echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ${APTGET_CHROOT_DIR}/home/user/.bashrc
+	echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ${APTGET_CHROOT_DIR}/home/user/.bashrc
+	echo "export CYCLONEDDS_URI=/home/user/CycloneDDSConfig.xml" >> ${APTGET_CHROOT_DIR}/home/user/.bashrc
+
+	chown user:user ${APTGET_CHROOT_DIR}/home/user/CycloneDDSConfig.xml
+	chown user:user ${APTGET_CHROOT_DIR}/home/user/.bashrc
 
 	set +x
 }
