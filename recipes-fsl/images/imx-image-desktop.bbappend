@@ -116,13 +116,13 @@ APTGET_EXTRA_PACKAGES_LAST += " \
 	ros-galactic-image-tools \
 	ros-galactic-image-transport \
 	ros-galactic-image-transport-plugins \
-	ros-galactic-*msg* \
+	ros-galactic-irobot-create-msgs \
 	ros-galactic-camera-calibration-parsers \
 	ros-galactic-camera-info-manager \
 	ros-galactic-launch-testing-ament-cmake \
 	ros-galactic-vision-opencv \
 	ros-galactic-image-pipeline \
-	ros-galactic-rmw-* \
+	ros-galactic-rmw-cyclonedds-cpp \
 "
 
 # Couldn't get v4l2loopback-utils because of dkms failure. Try later maybe?
