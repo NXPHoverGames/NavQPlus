@@ -1,3 +1,5 @@
+include ros2-packages.inc 
+
 IMAGE_PREPROCESS_COMMAND_remove += "do_fix_connman_conflict"
 
 IMAGE_INSTALL_append += "opencv \
@@ -116,13 +118,13 @@ APTGET_EXTRA_PACKAGES_LAST += " \
 	ros-galactic-image-tools \
 	ros-galactic-image-transport \
 	ros-galactic-image-transport-plugins \
-	ros-galactic-irobot-create-msgs \
 	ros-galactic-camera-calibration-parsers \
 	ros-galactic-camera-info-manager \
 	ros-galactic-launch-testing-ament-cmake \
 	ros-galactic-vision-opencv \
 	ros-galactic-image-pipeline \
-	ros-galactic-rmw-cyclonedds-cpp \
+	${ROS_GALACTIC_MSGS} \
+	${ROS_GALACTIC_RMWS} \
 "
 
 # Couldn't get v4l2loopback-utils because of dkms failure. Try later maybe?
