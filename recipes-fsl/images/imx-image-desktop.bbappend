@@ -1,8 +1,8 @@
 include ros2-packages.inc 
 
-IMAGE_PREPROCESS_COMMAND_remove += "do_fix_connman_conflict"
+IMAGE_PREPROCESS_COMMAND:remove += "do_fix_connman_conflict"
 
-IMAGE_INSTALL_append += "opencv \
+IMAGE_INSTALL:append += "opencv \
 			opencv-apps \
 			opencv-samples \
 			python3-opencv \
@@ -10,13 +10,13 @@ IMAGE_INSTALL_append += "opencv \
 			packagegroup-imx-ml-desktop \
 			"
 
-IMAGE_INSTALL_remove += "chromium-ozone-wayland"
+IMAGE_INSTALL:remove += "chromium-ozone-wayland"
 
 IMAGE_INSTALL += "install-interface-config install-dns-config"
 
-ROOTFS_POSTPROCESS_COMMAND_prepend += " do_ros_repo;"
-ROOTFS_POSTPROCESS_COMMAND_remove += " do_update_dns;"
-ROOTFS_POSTPROCESS_COMMAND_append += " do_disable_hibernate; do_generate_netplan; \
+ROOTFS_POSTPROCESS_COMMAND:prepend += " do_ros_repo;"
+ROOTFS_POSTPROCESS_COMMAND:remove += " do_update_dns;"
+ROOTFS_POSTPROCESS_COMMAND:append += " do_disable_hibernate; do_generate_netplan; \
 					do_fix_dns; do_install_pip_packages; do_install_home_files;"
 
 APTGET_EXTRA_PACKAGES += "\
@@ -111,25 +111,24 @@ APTGET_EXTRA_PACKAGES += "\
 	gstreamer1.0-opencv \
 "
 
-
 APTGET_EXTRA_PACKAGES_LAST += " \ 
-	ros-galactic-desktop \ 
-	ros-galactic-cv-bridge \
-	ros-galactic-image-tools \
-	ros-galactic-image-transport \
-	ros-galactic-image-transport-plugins \
-	ros-galactic-camera-calibration-parsers \
-	ros-galactic-camera-info-manager \
-	ros-galactic-launch-testing-ament-cmake \
-	ros-galactic-vision-opencv \
-	ros-galactic-image-pipeline \
-	${ROS_GALACTIC_MSGS} \
-	${ROS_GALACTIC_RMWS} \
+	ros-humble-desktop \ 
+	ros-humble-cv-bridge \
+	ros-humble-image-tools \
+	ros-humble-image-transport \
+	ros-humble-image-transport-plugins \
+	ros-humble-camera-calibration-parsers \
+	ros-humble-camera-info-manager \
+	ros-humble-launch-testing-ament-cmake \
+	ros-humble-vision-opencv \
+	ros-humble-image-pipeline \
+	${ROS_HUMBLE_MSGS} \
+	${ROS_HUMBLE_RMWS} \
 "
 
 # Couldn't get v4l2loopback-utils because of dkms failure. Try later maybe?
 
-APTGET_EXTRA_PACKAGES_remove += "\
+APTGET_EXTRA_PACKAGES:remove += "\
 	connman \
 "
 
@@ -203,7 +202,7 @@ fakeroot do_install_home_files() {
 	</CycloneDDS> \
 	" > ${APTGET_CHROOT_DIR}/home/user/CycloneDDSConfig.xml
 
-	echo "source /opt/ros/galactic/setup.bash" >> ${APTGET_CHROOT_DIR}/home/user/.bashrc
+	echo "source /opt/ros/humble/setup.bash" >> ${APTGET_CHROOT_DIR}/home/user/.bashrc
 	echo "source /usr/share/colcon_argcomplete/hook/colcon-argcomplete.bash" >> ${APTGET_CHROOT_DIR}/home/user/.bashrc
 	echo "export RMW_IMPLEMENTATION=rmw_cyclonedds_cpp" >> ${APTGET_CHROOT_DIR}/home/user/.bashrc
 	echo "export CYCLONEDDS_URI=/home/user/CycloneDDSConfig.xml" >> ${APTGET_CHROOT_DIR}/home/user/.bashrc
