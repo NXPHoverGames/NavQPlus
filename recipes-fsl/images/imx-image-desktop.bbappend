@@ -149,7 +149,7 @@ fakeroot do_ros_repo() {
 	set -x
 
 	wget https://raw.githubusercontent.com/ros/rosdistro/master/ros.key -O ${APTGET_CHROOT_DIR}/usr/share/keyrings/ros-archive-keyring.gpg
-	echo "deb [arch=arm64 signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu focal main" > ${APTGET_CHROOT_DIR}/etc/apt/sources.list.d/ros2.list
+	echo "deb [arch=arm64 signed-by=/usr/share/keyrings/ros-archive-keyring.gpg] http://packages.ros.org/ros2/ubuntu jammy main" > ${APTGET_CHROOT_DIR}/etc/apt/sources.list.d/ros2.list
 	
 	set +x
 }
