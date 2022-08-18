@@ -17,6 +17,14 @@ ros-galactic-dwb-msgs \
 ros-galactic-four-wheel-steering-msgs \
 ros-galactic-foxglove-msgs \
 ros-galactic-gazebo-msgs \
+ros-galactic-image-common \
+ros-galactic-image-geometry \
+ros-galactic-image-proc \
+ros-galactic-image-publisher \
+ros-galactic-image-rotate \
+ros-galactic-image-tools \
+ros-galactic-image-transport \
+ros-galactic-image-view \
 ros-galactic-irobot-create-msgs \
 ros-galactic-lgsvl-msgs \
 ros-galactic-lifecycle-msgs \
@@ -30,9 +38,6 @@ ros-galactic-marti-perception-msgs \
 ros-galactic-marti-sensor-msgs \
 ros-galactic-marti-status-msgs \
 ros-galactic-marti-visualization-msgs \
-ros-galactic-mavros-msgs \
-ros-galactic-micro-ros-diagnostic-msgs \
-ros-galactic-micro-ros-msgs \
 ros-galactic-microstrain-inertial-msgs \
 ros-galactic-moveit-msgs \
 ros-galactic-mrpt-msgs \
@@ -56,7 +61,6 @@ ros-galactic-radar-msgs \
 ros-galactic-rc-common-msgs \
 ros-galactic-rc-reason-msgs \
 ros-galactic-rcss3d-agent-msgs \
-ros-galactic-realsense2-camera-msgs \
 ros-galactic-rmf-building-map-msgs \
 ros-galactic-rmf-charger-msgs \
 ros-galactic-rmf-dispenser-msgs \
@@ -78,11 +82,9 @@ ros-galactic-sensor-msgs \
 ros-galactic-sensor-msgs-py \
 ros-galactic-shape-msgs \
 ros-galactic-smacc2-msgs \
-ros-galactic-soccer-object-msgs \
 ros-galactic-statistics-msgs \
 ros-galactic-std-msgs \
 ros-galactic-stereo-msgs \
-ros-galactic-stubborn-buddies-msgs \
 ros-galactic-system-modes-msgs \
 ros-galactic-teleop-tools-msgs \
 ros-galactic-test-msgs \
@@ -115,8 +117,6 @@ ros-galactic-rmw-dds-common \
 ros-galactic-rmw-fastrtps-cpp \
 ros-galactic-rmw-fastrtps-dynamic-cpp \
 ros-galactic-rmw-fastrtps-shared-cpp \
-ros-galactic-rmw-gurumdds-cpp \
-ros-galactic-rmw-gurumdds-shared-cpp \
 ros-galactic-rmw-implementation \
 ros-galactic-rmw-implementation-cmake \
 "

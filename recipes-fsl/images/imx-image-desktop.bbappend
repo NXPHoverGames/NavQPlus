@@ -17,7 +17,7 @@ IMAGE_INSTALL += "install-interface-config install-dns-config"
 ROOTFS_POSTPROCESS_COMMAND_prepend += " do_ros_repo;"
 ROOTFS_POSTPROCESS_COMMAND_remove += " do_update_dns;"
 ROOTFS_POSTPROCESS_COMMAND_append += " do_disable_hibernate; do_generate_netplan; \
-					do_fix_dns; do_install_pip_packages; do_install_home_files;"
+					do_fix_dns; do_install_pip_packages; do_remove_libcurl; do_install_home_files;"
 
 APTGET_EXTRA_PACKAGES += "\
 	netplan.io \
@@ -112,7 +112,8 @@ APTGET_EXTRA_PACKAGES += "\
 "
 
 
-APTGET_EXTRA_PACKAGES_LAST += " \ 
+APTGET_EXTRA_PACKAGES_LAST += " \
+	ros-galactic-depthai-ros \ 
 	ros-galactic-desktop \ 
 	ros-galactic-cv-bridge \
 	ros-galactic-image-tools \
@@ -213,3 +214,12 @@ fakeroot do_install_home_files() {
 
 	set +x
 }
+
+fakeroot do_remove_libcurl() {	
+	set -x
+
+	rm ${APTGET_CHROOT_DIR}/usr/lib/libcurl.so.4
+
+	set +x
+}
+
