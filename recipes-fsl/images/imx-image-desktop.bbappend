@@ -17,7 +17,7 @@ IMAGE_INSTALL += "install-interface-config install-dns-config"
 ROOTFS_POSTPROCESS_COMMAND_prepend += " do_ros_repo;"
 ROOTFS_POSTPROCESS_COMMAND_remove += " do_update_dns;"
 ROOTFS_POSTPROCESS_COMMAND_append += " do_disable_hibernate; do_generate_netplan; \
-					do_fix_dns; do_install_pip_packages; do_remove_libcurl; do_install_home_files;"
+					do_fix_dns; do_install_pip_packages; do_install_plug_n_play;"
 
 APTGET_EXTRA_PACKAGES += "\
 	netplan.io \
@@ -192,7 +192,7 @@ fakeroot do_install_pip_packages() {
 	set +x
 }
 
-fakeroot do_install_home_files() {
+fakeroot do_install_plug_n_play() {
 	set -x
 
 	echo "<CycloneDDS> \
@@ -212,14 +212,9 @@ fakeroot do_install_home_files() {
 	chown user:user ${APTGET_CHROOT_DIR}/home/user/CycloneDDSConfig.xml
 	chown user:user ${APTGET_CHROOT_DIR}/home/user/.bashrc
 
-	set +x
-}
-
-fakeroot do_remove_libcurl() {	
-	set -x
-
 	rm ${APTGET_CHROOT_DIR}/usr/lib/libcurl.so.4
 
+	echo 'SUBSYSTEM=="usb", ATTRS{idVendor}=="03e7", MODE="0666"' | tee ${APTGET_CHROOT_DIR}/etc/udev/rules.d/80-movidius.rules
+
 	set +x
 }
-
